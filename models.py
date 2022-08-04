@@ -9,6 +9,19 @@ class FinanacialReport:
     per: float
     pbr: float
 
+    def __init__(self, year: str, roa, roe, per, pbr):
+        def _tf(value: str):
+            try:
+                return float(value)
+            except ValueError:
+                return 0
+
+        self.year = year
+        self.roa = _tf(roa)
+        self.roe = _tf(roe)
+        self.per = _tf(per)
+        self.pbr = _tf(pbr)
+
     def to_dict(self):
         return {
             "year": self.year,

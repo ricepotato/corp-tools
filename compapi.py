@@ -3,7 +3,6 @@ from dataclasses import dataclass
 from enum import Enum
 
 import FinanceDataReader as fdr
-from bs4 import BeautifulSoup as BS
 
 log = logging.getLogger()
 
@@ -86,18 +85,3 @@ class CompApi:
             )
             for _, row in sl.iterrows()
         ]
-
-
-def get_corp_html_text(code: str):
-    pass
-
-
-def get_financial_report(code: str):
-    text = get_corp_html_text(code)
-    bs = BS(text, "html.parser")
-
-
-def get_text_from_selector(self, bs, selector):
-    log.debug("getting text from selector. sel=%s", selector)
-    obj = bs.select(selector)
-    return obj[0].text.strip().replace(",", "")
